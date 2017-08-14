@@ -54,9 +54,9 @@ function setState(partialState) {
 
   $container.style.display = display;
   $name.innerText = name;
-  $rent.innerText = rent;
-  $sale.innerText = price;
-  $ratio.innerText = ratio;
+  $rent.innerText = "$" + Math.round(rent).toLocaleString();
+  $sale.innerText = "$" + Math.round(price).toLocaleString();
+  $ratio.innerText = ratio.toLocaleString();
 }
 
 export default {
