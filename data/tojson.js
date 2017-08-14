@@ -1,6 +1,7 @@
 const fs = require("fs");
 const { Transform } = require("stream");
 const { parse } = require("csv");
+const simplify = require("simplify-js");
 
 const input = fs.createReadStream("barrios.csv");
 const parser = parse({ from: 2 });
@@ -38,7 +39,19 @@ const reducer = new Transform({
   }
 });
 
+function simplifyPath(path) {
+  const points = path.map(({ lat, lng }) => ({ x: lat, y: lng }));
+  const spoints = simplify(points, 0.0003, true);
+  const spath = spoints.map(({ x, y }) => ({ lat: x, lng: y }));
+  return spath;
+}
+
 input.pipe(parser).pipe(transformer).pipe(reducer).on("finish", () => {
-  const data = JSON.stringify(areas, null, 2);
+  const simpledata = areas.map(a => ({
+    name: a.name,
+    coords: a.coords.map(simplifyPath)
+  }));
+
+  const data = JSON.stringify(simpledata, null, 2);
   fs.writeFile("areas.json", data);
 });
