@@ -23,6 +23,9 @@ function setState(partialState) {
 
   const { areas } = state;
 
+  const minRatio = Math.min(...areas.map(a => a.ratio));
+  const maxRatio = Math.max(...areas.map(a => a.ratio));
+
   loadGoogleMaps().then(gmaps => {
     state.map = new gmaps.Map($map, {
       zoom: 12,
@@ -31,7 +34,7 @@ function setState(partialState) {
     });
 
     areas.forEach(area => {
-      const polygonOpts = getPolygon(area);
+      const polygonOpts = getPolygon(area, minRatio, maxRatio);
       const polygon = new gmaps.Polygon(polygonOpts);
       polygon.setMap(state.map);
       gmaps.event.addListener(polygon, "mouseover", e => {
@@ -60,9 +63,11 @@ export default {
   setState
 };
 
-function getPolygon({ name, coords }) {
-  const ratio = Math.random();
-  const color = scale[Math.floor(ratio * 20)];
+function getPolygon({ name, coords, ratio }, minRatio, maxRatio) {
+  const x = (ratio - minRatio) / (maxRatio - minRatio);
+  const color = scale[Math.round(x * (scale.length-1))];
+  console.log(x);
+  console.log(x * scale.length);
   return {
     paths: coords,
     strokeColor: color,
