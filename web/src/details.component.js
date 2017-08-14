@@ -19,11 +19,11 @@ $container = (
         <td ref={e => ($name = e)} />
       </tr>
       <tr>
-        <th>Alquiler (mediana)</th>
+        <th>Alquiler</th>
         <td ref={e => ($rent = e)} />
       </tr>
       <tr>
-        <th>Venta (mediana)</th>
+        <th>Venta</th>
         <td ref={e => ($sale = e)} />
       </tr>
       <tr>
@@ -37,9 +37,9 @@ $container = (
 const state = {
   show: false,
   name: null,
-  rent: 20000,
-  sale: 4000000,
-  ratio: 20
+  rent: null,
+  price: null,
+  ratio: null
 };
 
 function appendTo(parent) {
@@ -49,13 +49,13 @@ function appendTo(parent) {
 function setState(partialState) {
   Object.assign(state, partialState);
 
-  const { show, name, rent, sale, ratio } = state;
+  const { show, name, rent, price, ratio } = state;
   const display = state.show ? "block" : "none";
 
   $container.style.display = display;
   $name.innerText = name;
   $rent.innerText = rent;
-  $sale.innerText = sale;
+  $sale.innerText = price;
   $ratio.innerText = ratio;
 }
 

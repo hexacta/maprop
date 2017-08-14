@@ -38,7 +38,10 @@ function setState(partialState) {
         console.log(area.name);
         details.setState({
           show: true,
-          name: area.name
+          name: area.name,
+          rent: area.rent,
+          price: area.price,
+          ratio: area.ratio
         });
         polygon.setOptions({ fillOpacity: 0.8 });
       });

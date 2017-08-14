@@ -1,5 +1,5 @@
 import { css } from "glamor";
-import data from "./areas.json";
+import data from "./info";
 import map from "./map.component";
 
 css.global("html, body", { padding: 0, margin: 0, height: "100%" });
