@@ -26,7 +26,7 @@ function setState(partialState) {
   const minRatio = Math.min(...areas.map(a => a.ratio));
   const maxRatio = Math.max(...areas.map(a => a.ratio));
 
-  loadGoogleMaps().then(gmaps => {
+  loadGoogleMaps({key: "AIzaSyB6cuVrCJvwyNos7SsUWZ0D1UjiwwvmiZM"}).then(gmaps => {
     state.map = new gmaps.Map($map, {
       zoom: 12,
       center: { lng: -58.4537674321647, lat: -34.5966342484152 },

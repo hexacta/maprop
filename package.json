@@ -1,6 +1,7 @@
 {
-	"scripts": {
-		"install": "cd web && yarn install",
-		"build": "cd web && yarn build"
-	}
+  "scripts": {
+    "install": "cd web && yarn install",
+    "build": "cd web && yarn build",
+    "dev": "cd web && yarn dev"
+  }
 }
