@@ -38,7 +38,6 @@ function setState(partialState) {
       const polygon = new gmaps.Polygon(polygonOpts);
       polygon.setMap(state.map);
       gmaps.event.addListener(polygon, "mouseover", e => {
-        console.log(area.name);
         details.setState({
           show: true,
           name: area.name,
