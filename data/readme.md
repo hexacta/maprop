@@ -4,3 +4,10 @@ $ yarn
 $ yarn tojson
 $ head areas.json
 ```
+
+And, generate a mysql query to get the info:  
+```
+$ yarn
+$ yarn tosql
+$ head query.sql
+```

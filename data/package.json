@@ -4,6 +4,7 @@
     "simplify-js": "^1.2.1"
   },
   "scripts": {
-    "tojson": "node tojson"
+    "tojson": "node tojson",
+    "tosql": "node tosql"
   }
 }

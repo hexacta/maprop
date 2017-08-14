@@ -27,7 +27,7 @@ $container = (
         <td ref={e => ($sale = e)} />
       </tr>
       <tr>
-        <th>Ratio</th>
+        <th>Venta/Alquiler</th>
         <td ref={e => ($ratio = e)} />
       </tr>
     </table>

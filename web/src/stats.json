@@ -1,202 +1,290 @@
 [
-  {
-    "name": "Chacarita",
-    "rent": 5304.840037968128094,
-    "price": 1822529.1278557507
-  },
-  {
-    "name": "Paternal",
-    "rent": 5304.125919784357,
-    "price": 2003433.8569143277
-  },
-  {
-    "name": "Villa Crespo",
-    "rent": 13419.013734406491,
-    "price": 1583196.9357164493
-  },
-  {
-    "name": "Villa del Parque",
-    "rent": 11812.685826112554,
-    "price": 1125326.353131651
-  },
-  {
-    "name": "Almagro",
-    "rent": 16097.288146895577,
-    "price": 1273385.8360137008
-  },
-  {
-    "name": "Caballito",
-    "rent": 15056.236009929758,
-    "price": 1091654.307716641
-  },
-  {
-    "name": "Villa Santa Rita",
-    "rent": 6403.068090612214,
-    "price": 2696704.47013355
-  },
-  {
-    "name": "Monte Castro",
-    "rent": 8728.788499309332,
-    "price": 223370.3784167189
-  },
-  {
-    "name": "Villa Real",
-    "rent": 19613.980276310955,
-    "price": 2197115.7676519
-  },
-  { "name": "Flores", "rent": 4932.789653696727, "price": 2007708.9901630047 },
-  { "name": "Floresta", "rent": 2822.59673098626, "price": 1859957.301332743 },
-  {
-    "name": "Constitución",
-    "rent": 1941.074071454545,
-    "price": 1324408.5353153346
-  },
-  {
-    "name": "San Cristóbal",
-    "rent": 3784.6608553277815,
-    "price": 1704053.3102089837
-  },
-  { "name": "Boedo", "rent": 16387.843806906625, "price": 1545493.9153078129 },
-  {
-    "name": "Vélez Sársfield",
-    "rent": 5713.49746252674,
-    "price": 2027950.1655577386
-  },
-  {
-    "name": "Villa Luro",
-    "rent": 13851.352331200344,
-    "price": 773940.457643752
-  },
-  {
-    "name": "Parque Patricios",
-    "rent": 10019.805544827354,
-    "price": 2016455.918772677
-  },
-  {
-    "name": "Mataderos",
-    "rent": 17698.88963040147,
-    "price": 2381253.7070127367
-  },
-  {
-    "name": "Villa Lugano",
-    "rent": 3035.3810319650474,
-    "price": 708008.2215820523
-  },
-  { "name": "San Telmo", "rent": 9574.22521078549, "price": 972784.0511682297 },
-  {
-    "name": "Saavedra",
-    "rent": 11275.309498161232,
-    "price": 1498609.4946148563
-  },
-  { "name": "Coghlan", "rent": 8856.040703054532, "price": 2540732.8165983185 },
-  {
-    "name": "Villa Urquiza",
-    "rent": 16943.143084251566,
-    "price": 1324422.2030556675
-  },
-  {
-    "name": "Colegiales",
-    "rent": 14261.009944761245,
-    "price": 1079878.9724684667
-  },
-  {
-    "name": "Balvanera",
-    "rent": 13566.384313039074,
-    "price": 1118050.6061041781
-  },
-  {
-    "name": "Villa Gral. Mitre",
-    "rent": 14973.471123677715,
-    "price": 945458.067582805
-  },
-  {
-    "name": "Parque Chas",
-    "rent": 9269.566276774345,
-    "price": 2617325.7662171344
-  },
-  {
-    "name": "Agronomía",
-    "rent": 19731.024408624617,
-    "price": 1600231.5391270837
-  },
-  {
-    "name": "Villa Ortúzar",
-    "rent": 15529.218388623098,
-    "price": 1913189.7029513076
-  },
-  {
-    "name": "Barracas",
-    "rent": 11929.003396988155,
-    "price": 749813.9171563489
-  },
-  {
-    "name": "Parque Avellaneda",
-    "rent": 10966.639396562465,
-    "price": 1557030.8044332268
-  },
-  {
-    "name": "Parque Chacabuco",
-    "rent": 8743.549408510255,
-    "price": 668522.3024487374
-  },
-  {
-    "name": "Nueva Pompeya",
-    "rent": 15680.368079577924,
-    "price": 2316847.4067870732
-  },
-  { "name": "Palermo", "rent": 5901.6376519091555, "price": 1247010.193758349 },
-  {
-    "name": "Villa Riachuelo",
-    "rent": 15680.5559979698415,
-    "price": 2092065.650100116
-  },
-  {
-    "name": "Villa Soldati",
-    "rent": 5272.928590719684,
-    "price": 175082.87475452572
-  },
-  {
-    "name": "Villa Pueyrredon",
-    "rent": 10685.90221657265,
-    "price": 1000599.37348064
-  },
-  {
-    "name": "Villa Devoto",
-    "rent": 3165.411830750431,
-    "price": 212220.87295063998
-  },
-  { "name": "Liniers", "rent": 17989.41863259563, "price": 338712.2865316216 },
-  {
-    "name": "Versalles",
-    "rent": 5396.051304616795,
-    "price": 1285776.0606870356
-  },
-  {
-    "name": "Puerto Madero",
-    "rent": 2717.8452668607724,
-    "price": 2241811.2403467335
-  },
-  {
-    "name": "Monserrat",
-    "rent": 17379.676530807472,
-    "price": 2058689.708986337
-  },
-  {
-    "name": "San Nicolás",
-    "rent": 2219.689515069212,
-    "price": 1125889.4223055393
-  },
-  {
-    "name": "Belgrano",
-    "rent": 10970.1056698655927,
-    "price": 2257931.5941013335
-  },
-  {
-    "name": "Recoleta",
-    "rent": 10970.229830987575,
-    "price": 2115317.305097676
-  },
-  { "name": "Retiro", "rent": 18103.218495744335, "price": 157039.55122816193 },
-  { "name": "Núñez", "rent": 3509.842232676279, "price": 1634862.9839699615 },
-  { "name": "La Boca", "rent": 5304.6010072557376, "price": 2260681.7026998284 }
+	{
+		"name" : "Chacarita",
+		"rent" : 27101.6304,
+		"price" : 3384167.1414,
+		"count" : 1642
+	},
+	{
+		"name" : "Paternal",
+		"rent" : 23225.0000,
+		"price" : 2761604.1708,
+		"count" : 312
+	},
+	{
+		"name" : "Villa Crespo",
+		"rent" : 30105.3571,
+		"price" : 3593815.3232,
+		"count" : 2913
+	},
+	{
+		"name" : "Villa del Parque",
+		"rent" : 33052.0548,
+		"price" : 3393043.5455,
+		"count" : 673
+	},
+	{
+		"name" : "Almagro",
+		"rent" : 23270.2717,
+		"price" : 3300663.1200,
+		"count" : 2428
+	},
+	{
+		"name" : "Caballito",
+		"rent" : 28640.3669,
+		"price" : 3237042.5420,
+		"count" : 3232
+	},
+	{
+		"name" : "Villa Santa Rita",
+		"rent" : 17144.0000,
+		"price" : 3477338.0199,
+		"count" : 446
+	},
+	{
+		"name" : "Monte Castro",
+		"rent" : 14844.4444,
+		"price" : 3090618.0030,
+		"count" : 426
+	},
+	{
+		"name" : "Villa Real",
+		"rent" : 12336.3636,
+		"price" : 3226772.0000,
+		"count" : 109
+	},
+	{
+		"name" : "Flores",
+		"rent" : 28330.0846,
+		"price" : 3208738.3809,
+		"count" : 3477
+	},
+	{
+		"name" : "Floresta",
+		"rent" : 17087.6623,
+		"price" : 3033411.3904,
+		"count" : 843
+	},
+	{
+		"name" : "Constitución",
+		"rent" : 47512.0000,
+		"price" : 2777420.9075,
+		"count" : 662
+	},
+	{
+		"name" : "San Cristóbal",
+		"rent" : 27629.0323,
+		"price" : 3249400.9081,
+		"count" : 703
+	},
+	{
+		"name" : "Boedo",
+		"rent" : 25381.8182,
+		"price" : 4871633.7387,
+		"count" : 525
+	},
+	{
+		"name" : "Vélez Sársfield",
+		"rent" : 23122.9167,
+		"price" : 3023509.0642,
+		"count" : 820
+	},
+	{
+		"name" : "Villa Luro",
+		"rent" : 29287.9630,
+		"price" : 3051831.6991,
+		"count" : 732
+	},
+	{
+		"name" : "Parque Patricios",
+		"rent" : 45061.6136,
+		"price" : 2564519.1667,
+		"count" : 396
+	},
+	{
+		"name" : "Mataderos",
+		"rent" : 13687.3239,
+		"price" : 3145371.2443,
+		"count" : 934
+	},
+	{
+		"name" : "Villa Lugano",
+		"rent" : 14176.3158,
+		"price" : 2702928.1385,
+		"count" : 337
+	},
+	{
+		"name" : "San Telmo",
+		"rent" : 30100.0000,
+		"price" : 4999922.7546,
+		"count" : 753
+	},
+	{
+		"name" : "Saavedra",
+		"rent" : 20792.5234,
+		"price" : 3550333.0667,
+		"count" : 1459
+	},
+	{
+		"name" : "Coghlan",
+		"rent" : 13113.3333,
+		"price" : 3476481.7678,
+		"count" : 625
+	},
+	{
+		"name" : "Villa Urquiza",
+		"rent" : 20858.9286,
+		"price" : 3637377.1192,
+		"count" : 1882
+	},
+	{
+		"name" : "Colegiales",
+		"rent" : 36898.0000,
+		"price" : 5608379.0995,
+		"count" : 1144
+	},
+	{
+		"name" : "Balvanera",
+		"rent" : 35368.8966,
+		"price" : 3097794.8670,
+		"count" : 2324
+	},
+	{
+		"name" : "Villa Gral. Mitre",
+		"rent" : 18828.2051,
+		"price" : 2730046.9372,
+		"count" : 694
+	},
+	{
+		"name" : "Parque Chas",
+		"rent" : 13970.0000,
+		"price" : 3306466.4870,
+		"count" : 264
+	},
+	{
+		"name" : "Agronomía",
+		"rent" : 10163.4615,
+		"price" : 3103712.8898,
+		"count" : 319
+	},
+	{
+		"name" : "Villa Ortúzar",
+		"rent" : 32275.4386,
+		"price" : 3865638.7069,
+		"count" : 569
+	},
+	{
+		"name" : "Barracas",
+		"rent" : 35260.8125,
+		"price" : 3692849.7684,
+		"count" : 957
+	},
+	{
+		"name" : "Parque Avellaneda",
+		"rent" : 21421.8750,
+		"price" : 3412934.0699,
+		"count" : 500
+	},
+	{
+		"name" : "Parque Chacabuco",
+		"rent" : 16177.7778,
+		"price" : 3404296.0921,
+		"count" : 744
+	},
+	{
+		"name" : "Nueva Pompeya",
+		"rent" : 72512.0000,
+		"price" : 3185802.5374,
+		"count" : 247
+	},
+	{
+		"name" : "Palermo",
+		"rent" : 40289.8132,
+		"price" : 6732293.5308,
+		"count" : 9650
+	},
+	{
+		"name" : "Villa Riachuelo",
+		"rent" : 6946.1538,
+		"price" : 2177000.0000,
+		"count" : 94
+	},
+	{
+		"name" : "Villa Soldati",
+		"rent" : 5800.0000,
+		"price" : 2279106.3830,
+		"count" : 63
+	},
+	{
+		"name" : "Villa Pueyrredon",
+		"rent" : 39901.1628,
+		"price" : 3432145.5562,
+		"count" : 621
+	},
+	{
+		"name" : "Villa Devoto",
+		"rent" : 13631.3953,
+		"price" : 3932240.6057,
+		"count" : 902
+	},
+	{
+		"name" : "Liniers",
+		"rent" : 20237.5000,
+		"price" : 2870397.2129,
+		"count" : 798
+	},
+	{
+		"name" : "Versalles",
+		"rent" : 12353.3333,
+		"price" : 4010610.6383,
+		"count" : 119
+	},
+	{
+		"name" : "Puerto Madero",
+		"rent" : 56194.6618,
+		"price" : 16473898.7439,
+		"count" : 1530
+	},
+	{
+		"name" : "Monserrat",
+		"rent" : 45626.7742,
+		"price" : 3408128.8838,
+		"count" : 1293
+	},
+	{
+		"name" : "San Nicolás",
+		"rent" : 68894.8886,
+		"price" : 4331970.3349,
+		"count" : 1887
+	},
+	{
+		"name" : "Belgrano",
+		"rent" : 39299.8861,
+		"price" : 6675027.2148,
+		"count" : 4822
+	},
+	{
+		"name" : "Recoleta",
+		"rent" : 42621.4919,
+		"price" : 7873802.9507,
+		"count" : 5534
+	},
+	{
+		"name" : "Retiro",
+		"rent" : 46418.8976,
+		"price" : 9204926.5371,
+		"count" : 1835
+	},
+	{
+		"name" : "Núñez",
+		"rent" : 30850.0000,
+		"price" : 5151215.4622,
+		"count" : 1514
+	},
+	{
+		"name" : "La Boca",
+		"rent" : 42748.2429,
+		"price" : 8695406.6017,
+		"count" : 974
+	}
 ]
