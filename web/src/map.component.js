@@ -65,8 +65,6 @@ export default {
 function getPolygon({ name, coords, ratio }, minRatio, maxRatio) {
   const x = (ratio - minRatio) / (maxRatio - minRatio);
   const color = scale[Math.round(x * (scale.length-1))];
-  console.log(x);
-  console.log(x * scale.length);
   return {
     paths: coords,
     strokeColor: color,
