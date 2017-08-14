@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "html-webpack-plugin": "^2.30.1",
+    "load-google-maps-api": "^1.0.0",
+    "webpack": "^3.5.3",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "dev": "webpack-dev-server",
+    "bundle-explore": "source-map-explorer dist/bundle.js"
+  },
+  "dependencies": {
+    "glamor": "^2.20.39",
+    "nativejsx-loader": "^2.0.0",
+    "source-map-explorer": "^1.4.0"
+  }
+}
