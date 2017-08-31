@@ -10,7 +10,7 @@ const containerStyle = css({
   display: "none"
 });
 
-let $container, $name, $rent, $sale, $ratio;
+let $container, $name, $rent, $price, $ratio, $count;
 $container = (
   <div {...containerStyle}>
     <table>
@@ -20,15 +20,19 @@ $container = (
       </tr>
       <tr>
         <th>Alquiler</th>
-        <td ref={e => ($rent = e)} />
+        <td id="rent" ref={e => ($rent = e)} />
       </tr>
       <tr>
         <th>Venta</th>
-        <td ref={e => ($sale = e)} />
+        <td id="price" ref={e => ($price = e)} />
       </tr>
       <tr>
         <th>Venta/Alquiler</th>
-        <td ref={e => ($ratio = e)} />
+        <td id="ratio" ref={e => ($ratio = e)} />
+      </tr>
+      <tr>
+        <th>Cantidad</th>
+        <td ref={e => ($count = e)} />
       </tr>
     </table>
   </div>
@@ -39,7 +43,9 @@ const state = {
   name: null,
   rent: null,
   price: null,
-  ratio: null
+  ratio: null,
+  count: null,
+  mode: null
 };
 
 function appendTo(parent) {
@@ -49,14 +55,18 @@ function appendTo(parent) {
 function setState(partialState) {
   Object.assign(state, partialState);
 
-  const { show, name, rent, price, ratio } = state;
+  const { show, name, mode, count } = state;
   const display = state.show ? "block" : "none";
 
   $container.style.display = display;
   $name.innerText = name;
-  $rent.innerText = "$" + Math.round(rent).toLocaleString();
-  $sale.innerText = "$" + Math.round(price).toLocaleString();
-  $ratio.innerText = ratio.toLocaleString();
+  let $modes = [$rent, $price, $ratio];
+  $modes.forEach($mode => {
+    let value = state[mode];
+    $mode.innerText = (mode === 'ratio' ? "" :"$") + (value ? Math.round(value).toLocaleString() : "");
+    $mode.parentNode.style.display = mode === $mode.id ? "" : "none";
+  });
+  $count.innerText = count;
 }
 
 export default {
