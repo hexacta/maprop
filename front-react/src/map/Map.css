@@ -1,3 +1,7 @@
 .Map{
-	display: inline;
+	margin-left: 200px;
+	height: 100%;
+}
+.Map>div{
+	height: 100%;
 }

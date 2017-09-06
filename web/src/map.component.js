@@ -85,7 +85,6 @@ function getPolygon({ name, coords }, ratio, minRatio, maxRatio) {
     strokeWeight: 2,
     fillColor: color,
     fillOpacity: 0.5,
-    clickable: true,
-    name
+    clickable: true
   };
 }

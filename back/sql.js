@@ -42,6 +42,7 @@ function find(name) {
 				data.name = name;
 				data.coords = area.coords;
 				data.dollarConversionRate = dollarConversionRate;
+				data.ratio = data.price / data.rent;
 				deferred.resolve(data);
 			}
 		});
