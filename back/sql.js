@@ -19,49 +19,56 @@ const find = (name, operationType, rooms) => {
 			polygon += ')';
 		});
 		polygon += '))';
-		let roomsCondition = '';
-		let params = [dollarConversionRate, dollarConversionRate];
-		if(rooms){
-			roomsCondition = 'AND ROOMS = ?';
-			params.push(rooms);
-		}
+		let operation = operationType === 'rent' ? 'Alquiler' : 'Venta';
+		let params = [dollarConversionRate, operation, rooms];
 		let query = `
 			SELECT 
-				AVG(CASE 
-					WHEN operation_type = 'Venta' THEN null
-					WHEN price_currency = 'USD' THEN price * ?
-					ELSE price END) AS rent,
-				AVG(CASE 
-					WHEN operation_type = 'Alquiler' THEN null
-					WHEN price_currency = 'USD' THEN price * ?
-					ELSE price END) AS price,
-				COUNT(1) count
+			(CASE WHEN price_currency = 'USD' THEN price * ? ELSE price END) AS value
 			FROM inmobiliaria.propiedades_mapa 
-			WHERE MBRWithin(Point(lat,lon), PolyFromText('${polygon}'))
-			${roomsCondition}
+			WHERE operation_type = ?
+			AND rooms = ?
+			AND price IS NOT NULL
+			AND MBRWithin(Point(lat,lon), PolyFromText('${polygon}'))
+			ORDER BY 1
 		`;
-		db.db.query(query, params, (error, result) => {
+		db.query(query, params, (error, result) => {
 			if(error){
 				deferred.reject(error);
 			}
 			else{
-				let data = {};
-				data.name = name;
-				data.coords = area.coords;
-				data.dollarConversionRate = dollarConversionRate;
-				data.count = result[0].count;
-				if(operationType === 'ratio'){
-					data.value = Math.ceil(result[0].price / result[0].rent);
+				let value = undefined;
+				if(result.length > 0){
+					value = Math.ceil(result[Math.floor(result.length / 2)].value);
 				}
-				else if(operationType === 'price'){
-					data.value = Math.ceil(result[0].price);
-				}
-				else if(operationType === 'rent'){
-					data.value = Math.ceil(result[0].rent);
-				}
+				let data = {
+					name: name,
+					coords: area.coords,
+					dollarConversionRate: dollarConversionRate,
+					count: result.length,
+					value: value
+				};
 				deferred.resolve(data);
 			}
 		});
+	});
+	return deferred.promise;
+};
+
+const findRatio = (name, rooms) => {
+	let deferred = q.defer();
+	let promises = [
+		find(name, 'price', rooms),
+		find(name, 'rent', rooms)
+	];
+	q.all(promises).then((results) => {
+		let result = Object.assign({}, results[0]);
+		if(!results[1].value){
+			results.value = undefined;
+		}
+		else {
+			result.value = Math.ceil(results[0].value / results[1].value);
+		}
+		deferred.resolve(result);
 	});
 	return deferred.promise;
 };
@@ -71,7 +78,12 @@ const findAll = (operationType, rooms) => {
 	.then((areas => {
 		let promises = [];
 		areas.forEach(area => {
-			promises.push(find(area.name, operationType, rooms));
+			if(operationType === 'ratio'){
+				promises.push(findRatio(area.name, rooms));
+			}
+			else{
+				promises.push(find(area.name, operationType, rooms));				
+			}
 		});
 		return q.all(promises);
 	}));

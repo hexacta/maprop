@@ -11,4 +11,4 @@ let options = {
 
 let pool  = mysql.createPool(options);
 
-module.exports.db = pool;
+module.exports = pool;
