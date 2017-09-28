@@ -2,3 +2,8 @@
   text-align: center;
   height: 100%;
 }
+.Sidebar{
+	position: fixed;
+	width: 200px;
+	height: 100%;
+}

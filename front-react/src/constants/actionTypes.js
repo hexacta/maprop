@@ -1,0 +1,6 @@
+export const SET_OPERATION_TYPE = 'SET_OPERATION_TYPE';
+export const SET_ROOMS = 'SET_ROOMS';
+export const SET_GMAPS = 'SET_GMAPS';
+export const DELETE_POLYGONS = 'DELETE_POLYGONS';
+export const REQUEST_POLYGONS = 'REQUEST_POLYGONS';
+export const SET_POLYGONS = 'SET_POLYGONS';

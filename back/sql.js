@@ -3,7 +3,7 @@ const q = require('q');
 const areas = require('./areas.js');
 const dolar = require('./dolar.js');
 
-function find(name) {
+const find = (name, operationType, rooms) => {
 	let deferred = q.defer();
 	let dollarConversionRate;
 	dolar.get().then(value => {
@@ -19,6 +19,12 @@ function find(name) {
 			polygon += ')';
 		});
 		polygon += '))';
+		let roomsCondition = '';
+		let params = [dollarConversionRate, dollarConversionRate];
+		if(rooms){
+			roomsCondition = 'AND ROOMS = ?';
+			params.push(rooms);
+		}
 		let query = `
 			SELECT 
 				AVG(CASE 
@@ -32,34 +38,43 @@ function find(name) {
 				COUNT(1) count
 			FROM inmobiliaria.propiedades_mapa 
 			WHERE MBRWithin(Point(lat,lon), PolyFromText('${polygon}'))
+			${roomsCondition}
 		`;
-		db.db.query(query, [dollarConversionRate, dollarConversionRate], (error, result) => {
+		db.db.query(query, params, (error, result) => {
 			if(error){
 				deferred.reject(error);
 			}
 			else{
-				let data = result[0];
+				let data = {};
 				data.name = name;
 				data.coords = area.coords;
 				data.dollarConversionRate = dollarConversionRate;
-				data.ratio = data.price / data.rent;
+				data.count = result[0].count;
+				if(operationType === 'ratio'){
+					data.value = Math.ceil(result[0].price / result[0].rent);
+				}
+				else if(operationType === 'price'){
+					data.value = Math.ceil(result[0].price);
+				}
+				else if(operationType === 'rent'){
+					data.value = Math.ceil(result[0].rent);
+				}
 				deferred.resolve(data);
 			}
 		});
 	});
 	return deferred.promise;
-}
+};
 
-function findAll(){
+const findAll = (operationType, rooms) => {
 	return areas.getAreas()
 	.then((areas => {
 		let promises = [];
 		areas.forEach(area => {
-			promises.push(find(area.name));
-		})
+			promises.push(find(area.name, operationType, rooms));
+		});
 		return q.all(promises);
 	}));
-}
+};
 
-module.exports.find = find;
 module.exports.findAll = findAll;

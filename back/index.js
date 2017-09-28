@@ -9,12 +9,10 @@ app.use(cors());
 // JSON
 app.use(bodyParser.json());
 
-app.get('/data', (request, response) => {
-	sql.findAll().then((result => response.send(result)), (error => response.status(500).send(error)));
-});
-
-app.get('/data/:name', (request, response) => {
-	sql.find(request.params.name).then((result => response.send(result)), (error => response.status(500).send(error)));
+app.get('/data/:operationType', (request, response) => {
+	let operationType = request.params.operationType;
+	let rooms = request.query.rooms;
+	sql.findAll(operationType, rooms).then((result => response.send(result)), (error => response.status(500).send(error)));
 });
 
 const server = app.listen(3001, () => {
