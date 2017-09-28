@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+//import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 
 import reducer from './reducers';
@@ -12,9 +12,9 @@ import Loading from './components/Loading.js';
 import { loadGMaps, loadPolygons } from './actions';
 import './App.css';
 
-const loggerMiddleware = createLogger();
+//const loggerMiddleware = createLogger();
 
-const store = createStore(reducer,applyMiddleware(thunkMiddleware, loggerMiddleware));
+const store = createStore(reducer,applyMiddleware(thunkMiddleware/*, loggerMiddleware*/));
 
 store.dispatch(loadGMaps());
 store.dispatch(loadPolygons());
