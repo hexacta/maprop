@@ -4,3 +4,5 @@ export const SET_GMAPS = 'SET_GMAPS';
 export const DELETE_POLYGONS = 'DELETE_POLYGONS';
 export const REQUEST_POLYGONS = 'REQUEST_POLYGONS';
 export const SET_POLYGONS = 'SET_POLYGONS';
+export const HIDE_DETAILS = 'HIDE_DETAILS';
+export const SHOW_DETAILS = 'SHOW_DETAILS';

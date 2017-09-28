@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
+
 import reducer from './reducers';
 import SidebarOperationType from './containers/SidebarOperationType.js';
 import SidebarRooms from './containers/SidebarRooms.js';

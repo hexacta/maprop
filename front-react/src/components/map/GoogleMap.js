@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Details from "./Details.js";
-import Colors from './PolygonColors.js';
+import Details from "./../../containers/Details.js";
+import Colors from './../../constants/PolygonColors.js';
 import './GoogleMap.css';
 
-const GoogleMap = ({polygons, gmaps}) => {
-	this.state = {
-		details: {
-			x: 200,
-			y: 0
-		}
-	};
+const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
 	if(gmaps){
+		// Create map
 		if(!this.map){
 			this.map = new gmaps.Map(this.mapDiv, {
 				zoom: 12,
@@ -22,6 +17,7 @@ const GoogleMap = ({polygons, gmaps}) => {
 				mapTypeId: 'terrain'
 			});
 		}
+		// Create polygons
 		polygons.forEach(polygonData => {
 			let color = Colors[Math.round(polygonData.scale * (Colors.length-1))];
 			polygonData.polygon = new gmaps.Polygon({
@@ -34,32 +30,24 @@ const GoogleMap = ({polygons, gmaps}) => {
 				clickable: true
 			});
 			polygonData.polygon.setMap(this.map);
+			// Listeners
 			gmaps.event.addListener(polygonData.polygon, "mouseover", e => {
 				polygonData.polygon.setOptions({ fillOpacity: 0.8 });
-				/*
-				let details = Object.assign({}, this.state.details, polygonData);
-				details.x = e.va.clientX + 50;
-				details.y = e.va.clientY - 50;
-				this.setState({details});
-				*/
+				let x = e.va.clientX;
+				let y = e.va.clientY;
+				showDetails(polygonData.name, polygonData.value, polygonData.count, x, y);
 			});
 			gmaps.event.addListener(polygonData.polygon, "mouseout", e => {
 				polygonData.polygon.setOptions({ fillOpacity: 0.5 });
-				/*
-				let details = Object.assign({}, this.state.details, polygonData);
-				Object.keys(polygonData).forEach(key => delete details[key]);
-				this.setState({details});
-				*/
+				hideDetails();
 			});
-
 		});
 	}
-
 
 	return (
 		<div className="Map">
 			<div id="map" ref={(div) => { this.mapDiv = div; }}></div>
-			<Details data={this.state.details}/>
+			<Details/>
 		</div>
 	);
 }
@@ -81,7 +69,7 @@ GoogleMap.propTypes = {
 			).isRequired
 		}).isRequired
 	).isRequired,
-	gmaps: PropTypes.shape({})
+	gmaps: PropTypes.object
 };
 
 export default GoogleMap;
