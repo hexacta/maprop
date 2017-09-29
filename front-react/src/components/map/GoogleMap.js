@@ -24,7 +24,7 @@ const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
 				paths: polygonData.coords,
 				strokeColor: color,
 				strokeOpacity: 0.8,
-				strokeWeight: 2,
+				strokeWeight: 1,
 				fillColor: color,
 				fillOpacity: 0.5,
 				clickable: true
@@ -58,7 +58,7 @@ GoogleMap.propTypes = {
 			name: PropTypes.string.isRequired,
 			dollarConversionRate: PropTypes.string.isRequired,
 			count: PropTypes.number.isRequired,
-			value: PropTypes.number.isRequired,
+			value: PropTypes.number,
 			coords: PropTypes.arrayOf(
 				PropTypes.arrayOf(
 					PropTypes.shape({

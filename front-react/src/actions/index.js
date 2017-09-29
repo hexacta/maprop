@@ -51,7 +51,7 @@ export const loadPolygons = () => {
 		let operationType = getState().filters.operationType;
 		let rooms = getState().filters.rooms;
 		dispatch(requestPolygons());
-		let url = 'http://localhost:3001/data/' + operationType + (rooms ? '?rooms=' + rooms : '');
+		let url = 'http://localhost:4003/data/' + operationType + (rooms ? '?rooms=' + rooms : '');
 		return fetch(url).then(response => response.json()).then(polygons => {
 			dispatch(deletePolygons());
 			dispatch(setPolygons(polygons));

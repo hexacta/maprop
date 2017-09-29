@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { RENT, RATIO, PRICE } from './../../constants/Operations';
 import './OperationType.css';
 
 class OperationType extends Component {
@@ -19,13 +20,13 @@ class OperationType extends Component {
 		    <form className="OperationType">
 		    	<h2>Tipo de operaci&oacute;n</h2>
 		    	<div>
-			    	<input type="radio" name="mode" value="ratio" defaultChecked={this.props.operationType === 'ratio'} onClick={this.onClick}/> Venta/Alquiler
+			    	<input type="radio" name="mode" value={RATIO} defaultChecked={this.props.operationType === RATIO} onClick={this.onClick}/> Venta/Alquiler
 			    </div>
 			    <div>
-			    	<input type="radio" name="mode" value="rent" defaultChecked={this.props.operationType === 'rent'} onClick={this.onClick}/> Alquiler
+			    	<input type="radio" name="mode" value={RENT} defaultChecked={this.props.operationType === RENT} onClick={this.onClick}/> Alquiler
 			    </div>
 			    <div>
-			    	<input type="radio" name="mode" value="price" defaultChecked={this.props.operationType === 'price'} onClick={this.onClick}/> Venta
+			    	<input type="radio" name="mode" value={PRICE} defaultChecked={this.props.operationType === PRICE} onClick={this.onClick}/> Venta
 			    </div>
 			</form>
 		);

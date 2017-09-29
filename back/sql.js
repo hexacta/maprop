@@ -3,6 +3,15 @@ const q = require('q');
 const areas = require('./areas.js');
 const dolar = require('./dolar.js');
 
+const median = function(array){
+	if(array.length % 2){
+		return array[Math.floor(array.length / 2)];
+	}
+	else{
+		return Math.ceil((array[array.length / 2 - 1] + array[array.length / 2]) / 2);
+	}
+};
+
 const find = (name, operationType, rooms) => {
 	let deferred = q.defer();
 	let dollarConversionRate;
@@ -24,27 +33,27 @@ const find = (name, operationType, rooms) => {
 		let query = `
 			SELECT 
 			(CASE WHEN price_currency = 'USD' THEN price * ? ELSE price END) AS value
-			FROM inmobiliaria.propiedades_mapa 
+			FROM inmobiliaria.propiedades 
 			WHERE operation_type = ?
 			AND rooms = ?
 			AND price IS NOT NULL
 			AND MBRWithin(Point(lat,lon), PolyFromText('${polygon}'))
 			ORDER BY 1
 		`;
-		db.query(query, params, (error, result) => {
+		db.query(query, params, (error, results) => {
 			if(error){
 				deferred.reject(error);
 			}
 			else{
 				let value = undefined;
-				if(result.length > 0){
-					value = Math.ceil(result[Math.floor(result.length / 2)].value);
+				if(results.length > 0){
+					value = median(results.map(r => r.value));
 				}
 				let data = {
 					name: name,
 					coords: area.coords,
 					dollarConversionRate: dollarConversionRate,
-					count: result.length,
+					count: results.length,
 					value: value
 				};
 				deferred.resolve(data);
@@ -62,10 +71,11 @@ const findRatio = (name, rooms) => {
 	];
 	q.all(promises).then((results) => {
 		let result = Object.assign({}, results[0]);
-		if(!results[1].value){
-			results.value = undefined;
+		if(!results[0].value || !results[1].value){
+			result.value = undefined;
 		}
 		else {
+			result.count = Math.min(results[0].count, results[1].count);
 			result.value = Math.ceil(results[0].value / results[1].value);
 		}
 		deferred.resolve(result);

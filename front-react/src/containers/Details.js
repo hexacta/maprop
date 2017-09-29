@@ -7,7 +7,8 @@ const mapStateToProps = (state) => ({
 	count: state.details.count,
 	x: state.details.x,
 	y: state.details.y,
-	show: state.details.show
+	show: state.details.show,
+	operationType: state.filters.operationType
 });
 
 const Details = connect(mapStateToProps)(DetailsPopup);

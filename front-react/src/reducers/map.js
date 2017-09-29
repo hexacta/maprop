@@ -12,8 +12,8 @@ const initialState = {
 };
 
 const calculateBoundaries = (state) => {
-	let max = Math.max(...state.polygons.map(a => a.value));
-	let min = Math.min(...state.polygons.map(a => a.value));
+	let max = Math.max(...state.polygons.map(a => a.value || 0));
+	let min = Math.min(...state.polygons.map(a => a.value || Number.MAX_SAFE_INTEGER));
 	state.polygons.forEach(p => p.scale = (p.value - min) / (max - min));
 }
 

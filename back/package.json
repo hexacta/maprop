@@ -8,9 +8,11 @@
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
+    "express-validator": "^4.2.1",
     "fs": "^0.0.1-security",
     "memory-cache": "^0.2.0",
     "mysql": "^2.14.1",
+    "node-fetch": "^1.7.3",
     "q": "^1.5.0",
     "request": "^2.81.0"
   }
