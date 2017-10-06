@@ -5,8 +5,8 @@ const file = './areas.json';
 
 function getAreas(){
 	let deferred = q.defer();
-	fs.readFile(file, 'utf8', (err, data) => {
-  		if (err){
+	fs.readFile(file, 'utf8', (error, data) => {
+  		if (error){
   			deferred.reject(error);
   		}
   		else{

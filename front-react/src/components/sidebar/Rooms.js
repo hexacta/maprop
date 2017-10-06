@@ -19,19 +19,8 @@ class Rooms extends Component {
 			<form className="Rooms">
 				<h2>Ambientes</h2>
 				<div>
-					<input type="radio" name="rooms" value="1" defaultChecked={this.props.rooms === '1'} onClick={this.onClick}/> 1
-				</div>
-				<div>
-					<input type="radio" name="rooms" value="2" defaultChecked={this.props.rooms === '2'} onClick={this.onClick}/> 2
-				</div>
-				<div>
-					<input type="radio" name="rooms" value="3" defaultChecked={this.props.rooms === '3'} onClick={this.onClick}/> 3
-				</div>
-				<div>
-					<input type="radio" name="rooms" value="4" defaultChecked={this.props.rooms === '4'} onClick={this.onClick}/> 4
-				</div>
-				<div>
-					<input type="radio" name="rooms" value="5" defaultChecked={this.props.rooms === '5'} onClick={this.onClick}/> 5
+					<div>{this.props.rooms}</div>
+					<input type="range" min="1" max="5" step="1" value={this.props.rooms} onChange={this.onClick} list="tickmarks"/>
 				</div>
 			</form>
 		);

@@ -6,10 +6,11 @@ import { createStore, applyMiddleware } from 'redux';
 
 import reducer from './reducers';
 import SidebarOperationType from './containers/SidebarOperationType.js';
+import SidebarPropertyType from './containers/SidebarPropertyType.js';
 import SidebarRooms from './containers/SidebarRooms.js';
 import Map from './containers/Map.js';
 import Loading from './components/Loading.js';
-import { loadGMaps, loadPolygons } from './actions';
+import { loadGMaps, loadPropertyData } from './actions';
 import './App.css';
 
 //const loggerMiddleware = createLogger();
@@ -17,7 +18,7 @@ import './App.css';
 const store = createStore(reducer,applyMiddleware(thunkMiddleware/*, loggerMiddleware*/));
 
 store.dispatch(loadGMaps());
-store.dispatch(loadPolygons());
+store.dispatch(loadPropertyData());
 
 class App extends Component {
 	render() {
@@ -26,6 +27,7 @@ class App extends Component {
 				<div className="App">
 					<div className="Sidebar">
 				        <SidebarOperationType/>
+				        <SidebarPropertyType/>
 				        <SidebarRooms/>
 					</div>
 					<Map/>
