@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Details from "./../../containers/Details.js";
+import Range from "./Range.js"
 import Colors from './../../constants/PolygonColors.js';
 import './GoogleMap.css';
 
-const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
-	if(gmaps){
+const GoogleMap = (props) => {
+	if(props.gmaps){
 		// Create map
 		if(!this.map){
-			this.map = new gmaps.Map(this.mapDiv, {
+			this.map = new props.gmaps.Map(this.mapDiv, {
 				zoom: 12,
 				center: { 
 					lng: -58.4537674321647, 
@@ -18,9 +20,9 @@ const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
 			});
 		}
 		// Create polygons
-		polygons.forEach(polygonData => {
+		props.polygons.forEach(polygonData => {
 			let color = Colors[Math.round(polygonData.scale * (Colors.length-1))];
-			polygonData.polygon = new gmaps.Polygon({
+			polygonData.polygon = new props.gmaps.Polygon({
 				paths: polygonData.coords,
 				strokeColor: color,
 				strokeOpacity: 0.8,
@@ -31,15 +33,15 @@ const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
 			});
 			polygonData.polygon.setMap(this.map);
 			// Listeners
-			gmaps.event.addListener(polygonData.polygon, "mouseover", e => {
+			props.gmaps.event.addListener(polygonData.polygon, "mouseover", e => {
 				polygonData.polygon.setOptions({ fillOpacity: 0.8 });
 				let x = e.va.clientX;
 				let y = e.va.clientY;
-				showDetails(polygonData.name, polygonData.value, polygonData.count, x, y);
+				props.showDetails(polygonData, x, y);
 			});
-			gmaps.event.addListener(polygonData.polygon, "mouseout", e => {
+			props.gmaps.event.addListener(polygonData.polygon, "mouseout", e => {
 				polygonData.polygon.setOptions({ fillOpacity: 0.5 });
-				hideDetails();
+				props.hideDetails();
 			});
 		});
 	}
@@ -48,6 +50,7 @@ const GoogleMap = ({polygons, gmaps, hideDetails, showDetails}) => {
 		<div className="Map">
 			<div id="map" ref={(div) => { this.mapDiv = div; }}></div>
 			<Details/>
+			<Range/>
 		</div>
 	);
 }

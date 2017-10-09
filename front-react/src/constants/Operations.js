@@ -1,3 +1,14 @@
-export const RENT = 'rent';
-export const PRICE = 'price';
-export const RATIO = 'ratio';
+export default {
+	rent: {
+		unit: '$ ',
+		value: 'value'
+	},
+	price: {
+		unit: 'USD ',
+		value: 'dollarValue'
+	},
+	ratio: {
+		unit: '',
+		value: 'value'
+	}
+};

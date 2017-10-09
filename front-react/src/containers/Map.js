@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	hideDetails: () => dispatch(hideDetails()),
-	showDetails: (name, value, count, x, y) => dispatch(showDetails(name, value, count, x, y))
+	showDetails: (polygonData, x, y) => dispatch(showDetails(polygonData, x, y))
 });
 
 const Map = connect(mapStateToProps,mapDispatchToProps)(GoogleMap);

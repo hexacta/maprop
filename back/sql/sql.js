@@ -44,9 +44,11 @@ const find = (filters) => {
 					coords: area.coords,
 					dollarConversionRate: dollarConversionRate,
 					count: results.length,
-					value: value,
-					dollarValue: value / dollarConversionRate
+					value: value
 				};
+				if(value){
+					data.dollarValue = value / dollarConversionRate;
+				}
 				deferred.resolve(data);
 			}
 		});

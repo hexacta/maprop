@@ -4,17 +4,19 @@ import {
   REQUEST_POLYGONS,
   SET_POLYGONS
 } from '../constants/actionTypes';
+import Operations from './../constants/Operations';
 
 const initialState = {
 	gmaps: undefined,
 	polygons: [],
-	loading: false
+	loading: false,
+	range: {}
 };
 
-const calculateBoundaries = (state) => {
-	let max = Math.max(...state.polygons.map(a => a.value || 0));
-	let min = Math.min(...state.polygons.map(a => a.value || Number.MAX_SAFE_INTEGER));
-	state.polygons.forEach(p => p.scale = (p.value - min) / (max - min));
+const calculateBoundaries = (state, operationType) => {
+	state.range.max = Math.max(...state.polygons.map(a => a[Operations[operationType].value] || 0));
+	state.range.min = Math.min(...state.polygons.map(a => a[Operations[operationType].value] || Number.MAX_SAFE_INTEGER));
+	state.polygons.forEach(p => p.scale = (p[Operations[operationType].value] - state.range.min) / (state.range.max - state.range.min));
 }
 
 export default (state = initialState, action) => {
@@ -33,7 +35,7 @@ export default (state = initialState, action) => {
 		case SET_POLYGONS:
 			newState.polygons = action.polygons;
 			newState.loading = false;
-			calculateBoundaries(newState);
+			calculateBoundaries(newState, action.operationType);
 			return newState;
 		default:
 			return state;

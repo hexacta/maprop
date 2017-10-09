@@ -12,16 +12,18 @@ class PropertyType extends Component {
 	};
 	constructor(props){
 		super(props);
-		this.onClick = this.onClick.bind(this);
+		this.onChange = this.onChange.bind(this);
 	}
-	onClick(event){
+	onChange(event){
 		this.props.onPropertyTypeClick(event.target.value);
 	}
 	render() {
 		return (
 		    <form className="PropertyType">
 		    	<h2>Tipo de propiedad</h2>
-		    	{this.props.propertyTypes.map(propertyType => <div><input type="radio" name="propertyType" value={propertyType} defaultChecked={this.props.propertyType === propertyType} onClick={this.onClick}/> {propertyType}</div>)}
+		    	<select name="propertyType" value={this.props.propertyType} onChange={this.onChange}>
+		    		{this.props.propertyTypes.map(propertyType => <option value={propertyType}>{propertyType}</option>)}
+		    	</select>
 			</form>
 		);
 	}

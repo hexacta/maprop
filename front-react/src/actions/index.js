@@ -36,9 +36,10 @@ const requestPolygons = () => ({type: REQUEST_POLYGONS});
 
 const requestPropertyTypes = () => ({type: REQUEST_PROPERTY_TYPES});
 
-const setPolygons = (polygons) => ({
+const setPolygons = (polygons, operationType) => ({
 	type: SET_POLYGONS,
-	polygons
+	polygons,
+	operationType
 });
 
 const setPropertyTypes = (propertyTypes) => ({
@@ -55,7 +56,7 @@ const loadPolygons = () => {
 		let url = `${BACKEND}/data/${operationType}?rooms=${rooms}&propertyType=${propertyType}`;
 		return fetch(url).then(response => response.json()).then(polygons => {
 			dispatch(deletePolygons());
-			dispatch(setPolygons(polygons));
+			dispatch(setPolygons(polygons, operationType));
 		});
 	};
 };
@@ -71,11 +72,9 @@ const loadPropertyTypes = () => {
 
 export const hideDetails = () => ({type: HIDE_DETAILS});
 
-export const showDetails = (name, value, count, x, y) => ({
+export const showDetails = (polygonData, x, y) => ({
 	type: SHOW_DETAILS,
-	name,
-	value,
-	count,
+	polygonData,
 	x,
 	y
 });
