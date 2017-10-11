@@ -8,6 +8,7 @@ import reducer from './reducers';
 import SidebarOperationType from './containers/SidebarOperationType.js';
 import SidebarPropertyType from './containers/SidebarPropertyType.js';
 import SidebarRooms from './containers/SidebarRooms.js';
+import SidebarSurface from './containers/SidebarSurface.js';
 import Map from './containers/Map.js';
 import Loading from './components/Loading.js';
 import { loadGMaps, loadPropertyData } from './actions';
@@ -29,6 +30,7 @@ class App extends Component {
 				        <SidebarOperationType/>
 				        <SidebarPropertyType/>
 				        <SidebarRooms/>
+				        <SidebarSurface/>
 					</div>
 					<Map/>
 					<Loading/>

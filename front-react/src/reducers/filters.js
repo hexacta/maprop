@@ -2,14 +2,17 @@ import {
   SET_OPERATION_TYPE,
   SET_ROOMS,
   SET_PROPERTY_TYPE,
-  SET_PROPERTY_TYPES
+  SET_PROPERTY_TYPES,
+  SET_SURFACE_BOUNDARIES
 } from '../constants/actionTypes';
 
 const initialState = {
-	operationType: 'ratio',
-	rooms: '1',
+	operationType: 'rent',
+	rooms: '2',
 	propertyType: 'Departamento',
-	propertyTypes: []
+	propertyTypes: [],
+	minSurface: 0,
+	maxSurface: 500
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +29,10 @@ export default (state = initialState, action) => {
 			return newState;
 		case SET_PROPERTY_TYPES:
 			newState.propertyTypes = action.propertyTypes;
+			return newState;
+		case SET_SURFACE_BOUNDARIES:
+			newState.minSurface = action.min;
+			newState.maxSurface = action.max;
 			return newState;
 		default:
 			return state;

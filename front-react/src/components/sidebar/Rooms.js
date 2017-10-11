@@ -20,7 +20,7 @@ class Rooms extends Component {
 				<h2>Ambientes</h2>
 				<div>
 					<div>{this.props.rooms}</div>
-					<input type="range" min="1" max="5" step="1" value={this.props.rooms} onChange={this.onClick} list="tickmarks"/>
+					<input type="range" min="1" max="5" step="1" value={this.props.rooms} onChange={this.onClick}/>
 				</div>
 			</form>
 		);
