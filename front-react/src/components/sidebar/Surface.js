@@ -6,6 +6,10 @@ class Surface extends Component {
 	static propTypes = {
 		min: PropTypes.number,
 		max: PropTypes.number,
+		limits: PropTypes.shape({
+			min: PropTypes.number,
+			max: PropTypes.number
+		}),
 		onSurfaceChange: PropTypes.func.isRequired,
 		onSurfaceSet: PropTypes.func.isRequired
 	};
@@ -31,16 +35,23 @@ class Surface extends Component {
 		this.props.onSurfaceChange(min, max);
 	}
 	render() {
-		return (
-			<form className="Surface">
-				<h2>Superficie</h2>
-				<div>
+		if(this.props.limits){
+			return (
+				<form className="Surface">
+					<h3>Superficie</h3>
 					<div>{this.props.min} m&sup2; - {this.props.max} m&sup2;</div>
-					<input type="range" min="0" max="500" step="1" value={this.props.min} onChange={this.onChangeMin} onMouseUp={this.props.onSurfaceSet}/>
-					<input type="range" min="0" max="500" step="1" value={this.props.max} onChange={this.onChangeMax} onMouseUp={this.props.onSurfaceSet}/>
-				</div>
-			</form>
-		);
+					<input type="range" min={this.props.limits.min} max={this.props.limits.max} step="1" value={this.props.min} onChange={this.onChangeMin} onMouseUp={this.props.onSurfaceSet}/>
+					<input type="range" min={this.props.limits.min} max={this.props.limits.max} step="1" value={this.props.max} onChange={this.onChangeMax} onMouseUp={this.props.onSurfaceSet}/>
+				</form>
+			);
+		}
+		else{
+			return (
+				<form className="Surface">
+					<h3>Superficie</h3>
+				</form>
+			);
+		}
 	}
 }
 

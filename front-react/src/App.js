@@ -10,7 +10,9 @@ import SidebarPropertyType from './containers/SidebarPropertyType.js';
 import SidebarRooms from './containers/SidebarRooms.js';
 import SidebarSurface from './containers/SidebarSurface.js';
 import Map from './containers/Map.js';
-import Loading from './components/Loading.js';
+import Loading from './components/infobar/Loading.js';
+import Information from './components/infobar/Information.js';
+import Range from './components/infobar/Range.js';
 import { loadGMaps, loadPropertyData } from './actions';
 import './App.css';
 
@@ -27,13 +29,19 @@ class App extends Component {
 			<Provider store={store}>
 				<div className="App">
 					<div className="Sidebar">
+						<h2>Filtros</h2>
 				        <SidebarOperationType/>
 				        <SidebarPropertyType/>
 				        <SidebarRooms/>
 				        <SidebarSurface/>
 					</div>
 					<Map/>
-					<Loading/>
+					<div className="Infobar">
+						<h2>Informaci&oacute;n</h2>
+						<Loading/>
+						<Information/>
+						<Range/>
+					</div>
 				</div>
 			</Provider>
 		);

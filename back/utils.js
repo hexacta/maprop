@@ -7,4 +7,9 @@ const median = (array) => {
 	}
 };
 
+const nullSafeLimit = (operation, property, array) => {
+	return Math[operation](...array.filter(x => x[property]).map(y => y[property]));
+};
+
 module.exports.median = median;
+module.exports.nullSafeLimit = nullSafeLimit;

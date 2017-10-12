@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Details from "./../../containers/Details.js";
-import Range from "./Range.js"
 import Colors from './../../constants/PolygonColors.js';
 import './GoogleMap.css';
 
@@ -50,7 +49,6 @@ const GoogleMap = (props) => {
 		<div className="Map">
 			<div id="map" ref={(div) => { this.mapDiv = div; }}></div>
 			<Details/>
-			<Range/>
 		</div>
 	);
 }

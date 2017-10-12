@@ -4,7 +4,8 @@ import { changeSurface, loadPolygons } from './../actions';
 
 const mapStateToProps = (state) => ({
 	min: state.filters.minSurface,
-	max: state.filters.maxSurface
+	max: state.filters.maxSurface,
+	limits: state.filters.surfaceLimits
 });
 
 const mapDispatchToProps = (dispatch) => ({

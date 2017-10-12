@@ -17,11 +17,9 @@ class Rooms extends Component {
 	render() {
 		return (
 			<form className="Rooms">
-				<h2>Ambientes</h2>
-				<div>
-					<div>{this.props.rooms}</div>
-					<input type="range" min="1" max="5" step="1" value={this.props.rooms} onChange={this.onClick}/>
-				</div>
+				<h3>Ambientes</h3>
+				<div>{this.props.rooms}</div>
+				<input type="range" min="1" max="5" step="1" value={this.props.rooms} onChange={this.onClick}/>
 			</form>
 		);
 	}

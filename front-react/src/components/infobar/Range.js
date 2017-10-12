@@ -6,19 +6,22 @@ import Operations from './../../constants/Operations.js';
 import { LOCALE } from './../../constants/Config';
 import './Range.css';
 
+const scaleFactor = 2;
+
 let Range = ({min, max, operationType}) => {
 	let style = {
 		background: `linear-gradient(${Colors})`
 	};
 	let values = [];
 	if(min && max){
-		let step = (max - min) / Colors.length;
-		for(let i = 0; i < Colors.length + 1; i++){
+		let step = ((max - min) / Colors.length) * scaleFactor;
+		for(let i = 0; i < Colors.length / scaleFactor + 1; i ++){
 			values.push(min + step * i);
 		}
 	}
 	return (
 		<div className="Range">
+			<h3>Leyenda</h3>
 			<div className="Gradient" style={style}>
 				{values.map(v => <div>{Operations[operationType].unit}{Math.floor(v).toLocaleString(LOCALE)}</div>)}
 			</div>

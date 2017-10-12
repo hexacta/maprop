@@ -13,7 +13,10 @@ import {
   SHOW_DETAILS,
   REQUEST_PROPERTY_TYPES,
   SET_PROPERTY_TYPES,
-  SET_SURFACE_BOUNDARIES
+  SET_SURFACE,
+  SET_SURFACE_LIMITS,
+  DELETE_OPTIONALS,
+  SET_INFORMATION
 } from '../constants/actionTypes';
 
 const setOperationType = (operationType) => ({
@@ -48,6 +51,20 @@ const setPropertyTypes = (propertyTypes) => ({
 	propertyTypes
 });
 
+const setSurfaceLimits = ({min, max}) => ({
+	type: SET_SURFACE_LIMITS,
+	min,
+	max
+});
+
+const deleteOptionals = () => ({type: DELETE_OPTIONALS});
+
+const setInformation = ({count, dollarConversionRate}) => ({
+	type: SET_INFORMATION,
+	count,
+	dollarConversionRate
+});
+
 export const loadPolygons = () => {
 	return (dispatch, getState) => {
 		let operationType = getState().filters.operationType;
@@ -56,10 +73,17 @@ export const loadPolygons = () => {
 		let minSurface = getState().filters.minSurface;
 		let maxSurface = getState().filters.maxSurface;
 		dispatch(requestPolygons());
-		let url = `${BACKEND}/data/${operationType}?rooms=${rooms}&propertyType=${propertyType}&minSurface=${minSurface}&maxSurface=${maxSurface}`;
-		return fetch(url).then(response => response.json()).then(polygons => {
+		let url = `${BACKEND}/data/${operationType}?rooms=${rooms}&propertyType=${propertyType}`;
+		if(minSurface && maxSurface){
+			url += `&minSurface=${minSurface}&maxSurface=${maxSurface}`;
+		}
+		return fetch(url).then(response => response.json()).then(jsonResponse => {
 			dispatch(deletePolygons());
-			dispatch(setPolygons(polygons, operationType));
+			dispatch(setPolygons(jsonResponse.data, operationType));
+			dispatch(setInformation(jsonResponse));
+			if(!minSurface && !maxSurface){
+				dispatch(setSurfaceLimits(jsonResponse.surface));
+			}
 		});
 	};
 };
@@ -103,6 +127,7 @@ export const loadPropertyData = () => {
 export const changeOperationType = (operationType) => {
 	return (dispatch) => {
 		dispatch(setOperationType(operationType));
+		dispatch(deleteOptionals());
 		dispatch(loadPolygons());
 	};
 };
@@ -110,6 +135,7 @@ export const changeOperationType = (operationType) => {
 export const changeRooms = (rooms) => {
 	return (dispatch) => {
 		dispatch(setRooms(rooms));
+		dispatch(deleteOptionals());
 		dispatch(loadPolygons());
 	};
 };
@@ -117,12 +143,13 @@ export const changeRooms = (rooms) => {
 export const changePropertyType = (propertyType) => {
 	return (dispatch) => {
 		dispatch(setPropertyType(propertyType));
+		dispatch(deleteOptionals());
 		dispatch(loadPolygons());
 	};
 };
 
 export const changeSurface = (min, max) => ({
-	type: SET_SURFACE_BOUNDARIES,
+	type: SET_SURFACE,
 	min,
 	max
 });

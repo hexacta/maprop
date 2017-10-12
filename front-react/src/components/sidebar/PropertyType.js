@@ -20,7 +20,7 @@ class PropertyType extends Component {
 	render() {
 		return (
 		    <form className="PropertyType">
-		    	<h2>Tipo de propiedad</h2>
+		    	<h3>Tipo de propiedad</h3>
 		    	<select name="propertyType" value={this.props.propertyType} onChange={this.onChange}>
 		    		{this.props.propertyTypes.map(propertyType => <option value={propertyType}>{propertyType}</option>)}
 		    	</select>

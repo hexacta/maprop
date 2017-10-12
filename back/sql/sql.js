@@ -17,7 +17,8 @@ const find = (filters) => {
 		let polygon = subqueries.polygons(area, params);
 		let query = `
 			SELECT 
-			(CASE WHEN price_currency = 'USD' THEN price * ? ELSE price END) AS value
+			(CASE WHEN price_currency = 'USD' THEN price * ? ELSE price END) AS value,
+			CAST(TRIM(REPLACE(REPLACE(REPLACE(area_covered, 'm', ''), '²', ''),',','.')) AS UNSIGNED) AS surface
 			FROM inmobiliaria.propiedades 
 			WHERE price IS NOT NULL
 			${operationType}
@@ -28,26 +29,21 @@ const find = (filters) => {
 			${polygon}
 			ORDER BY 1
 		`;
-		console.log(query);
-		console.log(params);
 		db.query(query, params, (error, results) => {
 			if(error){
 				deferred.reject(error);
 			}
 			else{
-				let value = undefined;
-				if(results.length > 0){
-					value = utils.median(results.map(r => r.value));
-				}
 				let data = {
 					name: area.name,
 					coords: area.coords,
-					dollarConversionRate: dollarConversionRate,
-					count: results.length,
-					value: value
+					count: results.length
 				};
-				if(value){
-					data.dollarValue = value / dollarConversionRate;
+				if(results.length > 0){
+					data.value = utils.median(results.map(r => r.value));
+					data.dollarValue = Math.ceil(data.value / dollarConversionRate);
+					data.minSurface = Math.min(...results.map(r => r.surface));
+					data.maxSurface = Math.max(...results.map(r => r.surface));
 				}
 				deferred.resolve(data);
 			}
@@ -94,7 +90,26 @@ const findAll = (filters) => {
 			}
 		});
 		return q.all(promises);
-	}));
+	}))
+	.then(data => {
+		return {
+			dollarConversionRate: require('../dollar.js'),
+			surface: {
+				min: utils.nullSafeLimit('min', 'minSurface', data),
+				max: utils.nullSafeLimit('max', 'maxSurface', data)
+			},
+			value: {
+				min: utils.nullSafeLimit('min', 'value', data),
+				max: utils.nullSafeLimit('max', 'value', data)
+			},
+			dollarValue: {
+				min: utils.nullSafeLimit('min', 'dollarValue', data),
+				max: utils.nullSafeLimit('max', 'dollarValue', data)
+			},
+			count: data.reduce((sum, d) => sum + d.count, 0),
+			data: data
+		};
+	});
 };
 
 module.exports.findAll = findAll;

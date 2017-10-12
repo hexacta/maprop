@@ -17,7 +17,7 @@ class OperationType extends Component {
 	render() {
 		return (
 		    <form className="OperationType">
-		    	<h2>Tipo de operaci&oacute;n</h2>
+		    	<h3>Tipo de operaci&oacute;n</h3>
 		    	<div>
 			    	<input type="radio" name="mode" value="ratio" defaultChecked={this.props.operationType === "ratio"} onClick={this.onClick}/> Venta/Alquiler
 			    </div>
