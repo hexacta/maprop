@@ -22,9 +22,8 @@ let Range = ({min, max, operationType}) => {
 	return (
 		<div className="Range">
 			<h3>Leyenda</h3>
-			<div className="Gradient" style={style}>
-				{values.map(v => <div>{Operations[operationType].unit}{Math.floor(v).toLocaleString(LOCALE)}</div>)}
-			</div>
+			<div className="Gradient" style={style}>&nbsp;</div>
+			<div className="Values">{values.map(v => <div>{Operations[operationType].unit}{Math.floor(v).toLocaleString(LOCALE)}</div>)}</div>
 		</div>
 	);
 };

@@ -8,7 +8,7 @@ let Information = ({count, dollarConversionRate}) => {
 			<h3>Cantidad de propiedades</h3>
 			<span>{count}</span>
 			<h3>Cotizaci&oacute;n del dolar</h3>
-			<span>{dollarConversionRate}</span>
+			<span>$ {dollarConversionRate}</span>
 		</div>
 	);
 };

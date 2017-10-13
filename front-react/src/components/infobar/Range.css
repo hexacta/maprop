@@ -3,9 +3,14 @@
 }
 
 .Gradient{
+	display: inline-block;
+	vertical-align: top;
 	height: 220px;
-	border: 1px solid #000000;
 	opacity: 0.5;
-	width: 100%;
-	height: 100%
+	width: 20px;
+}
+
+.Values{
+	display: inline-block;
+	width: 180px;
 }
