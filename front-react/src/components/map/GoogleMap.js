@@ -34,8 +34,8 @@ const GoogleMap = (props) => {
 			// Listeners
 			props.gmaps.event.addListener(polygonData.polygon, "mouseover", e => {
 				polygonData.polygon.setOptions({ fillOpacity: 0.8 });
-				let x = e.va.clientX;
-				let y = e.va.clientY;
+				let x = e.xa.clientX;
+				let y = e.xa.clientY;
 				props.showDetails(polygonData, x, y);
 			});
 			props.gmaps.event.addListener(polygonData.polygon, "mouseout", e => {
@@ -57,7 +57,6 @@ GoogleMap.propTypes = {
 	polygons: PropTypes.arrayOf(
 		PropTypes.shape({
 			name: PropTypes.string.isRequired,
-			dollarConversionRate: PropTypes.string.isRequired,
 			count: PropTypes.number.isRequired,
 			value: PropTypes.number,
 			coords: PropTypes.arrayOf(

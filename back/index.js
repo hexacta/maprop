@@ -37,6 +37,26 @@ app.get('/propertyTypes', (request, response) => {
 	propertyType().then(propertyTypes => response.send(propertyTypes));
 });
 
+app.get('/details/:name', (request, response) => {
+	let name = request.params.name;
+	response.send({
+		name: name,
+		details: [{
+			value: 8500,
+			lat: -34.5966342484152,
+			lng: -58.4537674321647
+		},{
+			value: 10000,
+			lat: -34.5966342484152,
+			lng: -58.4537674321647
+		},{
+			value: 12000,
+			lat: -34.5966342484152,
+			lng: -58.4537674321647
+		}]
+	});
+});
+
 const cacheWarmup = (port) => {
 	dollar();
 	/*

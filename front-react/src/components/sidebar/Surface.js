@@ -19,7 +19,7 @@ class Surface extends Component {
 		this.onChangeMax = this.onChangeMax.bind(this);
 	}
 	onChangeMin(event){
-		let min = parseInt(event.target.value);
+		let min = parseInt(event.target.value, 10);
 		let max = this.props.max;
 		if(min > max){
 			max = min;
@@ -28,7 +28,7 @@ class Surface extends Component {
 	}
 	onChangeMax(event){
 		let min = this.props.min;
-		let max = parseInt(event.target.value);
+		let max = parseInt(event.target.value, 10);
 		if(max < min){
 			min = max;
 		}

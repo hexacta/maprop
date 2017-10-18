@@ -22,7 +22,7 @@ class PropertyType extends Component {
 		    <form className="PropertyType">
 		    	<h3>Tipo de propiedad</h3>
 		    	<select name="propertyType" value={this.props.propertyType} onChange={this.onChange}>
-		    		{this.props.propertyTypes.map(propertyType => <option value={propertyType}>{propertyType}</option>)}
+		    		{this.props.propertyTypes.map(propertyType => <option key={propertyType} value={propertyType}>{propertyType}</option>)}
 		    	</select>
 			</form>
 		);
